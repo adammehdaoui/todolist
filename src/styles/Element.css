@@ -1,0 +1,11 @@
+.element {
+    display: flex; 
+    align-items: center; 
+    padding: 10px;
+    border: 1px solid #626262;
+    border-radius: 10px;
+}
+
+.check-input {
+    margin-right: 20px; 
+}

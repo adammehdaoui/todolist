@@ -1,0 +1,11 @@
+img {
+    width: 20px;
+    height: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+}
+
+.filter-button {
+    padding-left: 15%;
+}
