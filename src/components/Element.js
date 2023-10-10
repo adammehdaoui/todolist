@@ -1,8 +1,8 @@
 import '../styles/Element.css'
 
-function Element({ description }) {
+function Element({ description, id }) {
     return (
-        <div className="element">
+        <div className="element" key={ id }>
             <input type="checkbox" className="check-input" />
             { description }
         </div>
