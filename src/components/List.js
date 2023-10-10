@@ -1,26 +1,25 @@
-import Element from './Element.js'
-import '../styles/List.css'
-import { alltodolist } from '../data/alltodolist.js'
+import Element from './Element.js';
+import '../styles/List.css';
+import { useTodo } from '../config/ToDoContext';
 
 function List() {
-    const firstToDoList = alltodolist.find((todolist) => todolist.id === 1);
+    const { todos } = useTodo();
 
     return (
         <div className='list'>
             { 
-                firstToDoList
-                    .todo
-                    .map((toDoItem, index) => (
-                        <Element 
-                            description={ toDoItem.text } 
-                            checked={ toDoItem.checked } 
-                            index={ index }
-                            key={ `${index}-${toDoItem.text}` }
-                        />
-                    ))
+                todos.map((toDoItem, index) => (
+                    <Element 
+                        description={toDoItem.text} 
+                        checked={toDoItem.checked} 
+                        index={index}
+                        todos={todos}
+                        key={`${index}-${toDoItem.text}-${toDoItem.checked}`}
+                    />
+                ))
             }
         </div>
     )
 }
 
-export default List
+export default List;

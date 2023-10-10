@@ -1,24 +1,24 @@
-import { useState } from 'react';
+import { useTodo } from '../config/ToDoContext';
 import '../styles/Element.css'
 
-function Element({ description, checked, index, id }) {
-    const [isInputChecked, changeChecked] = useState(checked);
+function Element({ description, checked, index }) {
+    const { toggleTodo } = useTodo();
 
-    function handleClickOnInput(){
-        changeChecked(!isInputChecked)
-    }
+    function handleClickOnInput () {
+        toggleTodo(index);
+    };
 
     return (
-        <div className="element" key={ id }>
+        <div className="element">
             <input 
                 type="checkbox" 
                 className="check-input" 
-                checked={ isInputChecked }
-                onChange={ handleClickOnInput }
+                checked={checked}
+                onChange={handleClickOnInput}
             />
             { description }
         </div>
-    )
+    );
 }
 
-export default Element
+export default Element;
