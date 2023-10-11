@@ -2,7 +2,6 @@ import plus from '../assets/plus.png'
 import minus from '../assets/minus.png'
 import edit from '../assets/edit.png'
 import checked from '../assets/checked.png'
-import '../styles/Actions.css'
 
 function Actions({ isFiltered, setFilter }) {
     function handleClick() {
@@ -10,13 +9,13 @@ function Actions({ isFiltered, setFilter }) {
     }
 
     return (
-        <div>
-            <img src={ plus } alt='Ajouter'/>
-            <img src={ minus } alt='Supprimer'/>
-            <img src={ edit } alt='Modifier'/>
+        <div className='flex justify-start space-x-3 m-3'>
+            <img src={ plus } className='w-5 h-5' alt='Ajouter'/>
+            <img src={ minus } className='w-5 h-5' alt='Supprimer'/>
+            <img src={ edit } className='w-5 h-5' alt='Modifier'/>
             <img 
                 src={ checked } 
-                className='filter-button' 
+                className='w-5 h-5' 
                 alt='Filtrer'
                 onClick={handleClick}
             />

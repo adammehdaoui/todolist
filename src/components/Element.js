@@ -1,22 +1,23 @@
 import { useTodo } from '../config/ToDoContext';
-import '../styles/Element.css'
 
 function Element({ description, checked, todolistid, index }) {
     const { toggleTodo } = useTodo();
 
     function handleClickOnInput () {
-        toggleTodo(index);
+        toggleTodo(index, todolistid);
     };
 
     return (
-        <div className="element">
+        <div className="element flex justify-start space-x-4">
             <input 
-                type="checkbox" 
-                className="check-input" 
+                type="checkbox"
+                className='cursor-pointer'
                 checked={checked}
                 onChange={() => handleClickOnInput()}
             />
-            { description }
+            <div>
+                { description }
+            </div>
         </div>
     );
 }

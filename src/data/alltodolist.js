@@ -27,4 +27,22 @@ export const alltodolist = [
         },
       ],
     },
+    {
+      id: 3,
+      name: "Minecraft",
+      todo: [
+        {
+          text: "Kill Alexis",
+          checked: false,
+        },
+        {
+          text: "Destroy Ender Dragon",
+          checked: true,
+        },
+        {
+          text: "Destroy Lorenzo",
+          checked: true,
+        }
+      ],
+    }
   ]

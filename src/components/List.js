@@ -1,21 +1,15 @@
 import Element from './Element.js';
-import '../styles/List.css';
 import { useTodo } from '../config/ToDoContext';
 
 function List({ activeTab, isFiltered }) {
     const { todos } = useTodo();
 
-
-    // console.log(activeTab)
-    // console.log(todos)
-    // console.log(todos.find(todo => todo.id === 1))
-
     const activeTodoList = todos
-                            .find(todo => todo.id === 1)
+                            .find(todo => todo.id === activeTab)
                             .todo
 
     return (
-        <div className='list'>
+        <div className='m-4'>
             { 
                 activeTodoList.map((toDoItem, index) => (
 
