@@ -1,16 +1,19 @@
 import List from './List.js'
 import Actions from './Actions.js'
+import Tabs from './Tabs.js'
 import { TodoProvider } from '../config/ToDoContext.js';
 import { useState } from 'react';
 
 function App() {
-  const [isFiltered, setFilter] = useState(false)
+  const [isFiltered, setFilter] = useState(false);
+  const [activeTab, setActive] = useState(1);
 
   return (
     <div className="App">
       <TodoProvider>
+        <Tabs activeTab={activeTab} setActive={setActive}/>
         <Actions isFiltered={isFiltered} setFilter={setFilter}/>
-        <List isFiltered={isFiltered}/>
+        <List activeTab={activeTab} isFiltered={isFiltered}/>
       </TodoProvider>
     </div>
   );

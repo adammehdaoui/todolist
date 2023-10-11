@@ -5,7 +5,7 @@ import { alltodolist } from '../data/alltodolist';
 const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-  const [todos, setTodos] = useState(alltodolist[0].todo);
+  const [todos, setTodos] = useState(alltodolist);
 
   const toggleTodo = (index) => {
     const updatedTodos = [...todos];

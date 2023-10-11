@@ -12,5 +12,19 @@ export const alltodolist = [
           checked: false,
         },
       ],
-    }
+    },
+    {
+      id: 2,
+      name: "Perso",
+      todo: [
+        {
+          text: "Go shopping",
+          checked: false,
+        },
+        {
+          text: "Text somebody",
+          checked: true,
+        },
+      ],
+    },
   ]

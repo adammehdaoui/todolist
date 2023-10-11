@@ -1,7 +1,7 @@
 import { useTodo } from '../config/ToDoContext';
 import '../styles/Element.css'
 
-function Element({ description, checked, index }) {
+function Element({ description, checked, todolistid, index }) {
     const { toggleTodo } = useTodo();
 
     function handleClickOnInput () {
@@ -14,7 +14,7 @@ function Element({ description, checked, index }) {
                 type="checkbox" 
                 className="check-input" 
                 checked={checked}
-                onChange={handleClickOnInput}
+                onChange={() => handleClickOnInput()}
             />
             { description }
         </div>
