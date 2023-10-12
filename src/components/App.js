@@ -1,12 +1,12 @@
+import React, { useState } from 'react'
 import List from './List.js'
 import Actions from './Actions.js'
 import Tabs from './Tabs.js'
-import { TodoProvider } from '../config/ToDoContext.js';
-import { useState } from 'react';
+import { TodoProvider } from '../config/ToDoContext.js'
 
-function App() {
-  const [isFiltered, setFilter] = useState(false);
-  const [activeTab, setActive] = useState(1);
+function App () {
+  const [isFiltered, setFilter] = useState(false)
+  const [activeTab, setActive] = useState(1)
 
   return (
     <div className="App">
@@ -16,7 +16,7 @@ function App() {
         <List activeTab={activeTab} isFiltered={isFiltered}/>
       </TodoProvider>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
