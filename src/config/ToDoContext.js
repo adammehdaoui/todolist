@@ -9,18 +9,30 @@ export const TodoProvider = ({ children }) => {
 
   const toggleTodo = (index, todolistid) => {
     const updatedTodos = [...todos];
-    const isChecked = updatedTodos
-                      .find(todo => todo.id === todolistid)
-                      .todo[index]
-                      .checked;
-    
-    updatedTodos
-      .find(todo => todo.id === todolistid)
-      .todo[index]
-      .checked = !isChecked;
+    const todoToUpdate = updatedTodos
+                          .find(todo => todo.id === todolistid)
+                          .todo[index];
 
-    setTodos(updatedTodos)
+    todoToUpdate.checked = !todoToUpdate.checked;
+
+    setTodos(updatedTodos);
   };
+
+  // const addTodo = (name) => {
+
+  // };
+
+  // const deleteTodo = (todolistid) => {
+
+  // };
+
+  // const addTodoItem = (name) => {
+
+  // };
+
+  // const deleteTodoItem = (index, todolistid) => {
+
+  // };
 
   return (
     <TodoContext.Provider value={{ todos, toggleTodo }}>

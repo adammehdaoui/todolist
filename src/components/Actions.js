@@ -9,18 +9,20 @@ function Actions({ isFiltered, setFilter }) {
     }
 
     return (
-        <div className='flex justify-start space-x-3 m-3'>
-            <img src={ plus } className='w-5 h-5' alt='Ajouter'/>
-            <img src={ minus } className='w-5 h-5' alt='Supprimer'/>
-            <img src={ edit } className='w-5 h-5' alt='Modifier'/>
+        <div className='flex justify-between space-x-3 m-3'>
+            <div className='flex justify-start space-x-3'>
+                <img src={ plus } className='w-5 h-5 cursor-pointer' alt='Ajouter'/>
+                <img src={ minus } className='w-5 h-5 cursor-pointer' alt='Supprimer'/>
+                <img src={ edit } className='w-5 h-5 cursor-pointer' alt='Modifier'/>
+            </div>
             <img 
                 src={ checked } 
-                className='w-5 h-5' 
+                className='w-5 h-5 cursor-pointer ml-auto' 
                 alt='Filtrer'
                 onClick={handleClick}
-            />
+            />  
         </div>
     )
 }
 
-export default Actions
+export default Actions;

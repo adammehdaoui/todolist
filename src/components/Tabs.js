@@ -1,3 +1,4 @@
+import plus from '../assets/plus.png'
 import { useTodo } from '../config/ToDoContext';
 
 function Tabs({activeTab, setActive}) {
@@ -29,6 +30,9 @@ function Tabs({activeTab, setActive}) {
                     </div>
                 ))
             }
+            <div className='cursor-pointer inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300'>
+                <img src={ plus } className='w-5 h-5 cursor-pointer' alt='Ajouter'/>
+            </div>
         </div>
     )
 }
