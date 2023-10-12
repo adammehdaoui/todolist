@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useTodo } from '../config/TodoContext'
 import PropTypes from 'prop-types'
 
 function Element ({ description, checked, todolistid, index }) {
   const { toggleTodo } = useTodo()
 
-  function handleClickOnInput () {
+  const handleClickOnInput = useCallback(() => {
     toggleTodo(index, todolistid)
-  };
+  }, [index, todolistid, toggleTodo])
 
   return (
       <div className="element flex justify-start space-x-4">
