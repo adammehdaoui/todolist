@@ -1,6 +1,6 @@
 import React from 'react'
 import Element from './Element.js'
-import { useTodo } from '../config/ToDoContext'
+import { useTodo } from '../config/TodoContext'
 import PropTypes from 'prop-types'
 
 function List ({ activeTab, isFiltered }) {

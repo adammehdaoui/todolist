@@ -1,6 +1,6 @@
 import React from 'react'
 import plus from '../assets/plus.png'
-import { useTodo } from '../config/ToDoContext'
+import { useTodo } from '../config/TodoContext'
 import PropTypes from 'prop-types'
 
 function Tabs ({ activeTab, setActive }) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTodo } from '../config/ToDoContext'
+import { useTodo } from '../config/TodoContext'
 import PropTypes from 'prop-types'
 
 function Element ({ description, checked, todolistid, index }) {
