@@ -1,17 +1,17 @@
-export const alltodolist = [
+const alltodolist = [
   {
     id: 1,
     name: 'Work Classes',
     todo: [
       {
         text: 'Install Next.js for the start of the project',
-        checked: true
+        checked: true,
       },
       {
         text: 'Buy a suit for the conference',
-        checked: false
-      }
-    ]
+        checked: false,
+      },
+    ],
   },
   {
     id: 2,
@@ -19,13 +19,13 @@ export const alltodolist = [
     todo: [
       {
         text: 'Go shopping',
-        checked: false
+        checked: false,
       },
       {
         text: 'Text somebody',
-        checked: true
-      }
-    ]
+        checked: true,
+      },
+    ],
   },
   {
     id: 3,
@@ -33,16 +33,18 @@ export const alltodolist = [
     todo: [
       {
         text: 'Kill Alexis',
-        checked: false
+        checked: false,
       },
       {
         text: 'Destroy Ender Dragon',
-        checked: true
+        checked: true,
       },
       {
         text: 'Destroy Lorenzo',
-        checked: true
-      }
-    ]
-  }
-]
+        checked: true,
+      },
+    ],
+  },
+];
+
+export default alltodolist;
