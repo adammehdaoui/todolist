@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useTodo } from '../config/TodoContext';
 
@@ -24,9 +25,9 @@ function Tabs({ activeTab, setActive }) {
             {todo.name}
           </button>
         ))}
-        <div className="cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border border-solid">
+        <Link to="createList" className="cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border border-solid">
           +
-        </div>
+        </Link>
       </div>
     </div>
   );
