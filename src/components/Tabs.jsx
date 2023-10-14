@@ -15,7 +15,7 @@ function Tabs({ activeTab, setActive }) {
         {todos.map((todo) => (
           <button
             type="button"
-            className={`cursor-pointer font-medium inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border border-solid ${
+            className={`cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border border-solid ${
               todo.id === activeTab ? 'text-blue-600 bg-gray-100' : null
             }`}
             key={todo.id}
@@ -24,7 +24,7 @@ function Tabs({ activeTab, setActive }) {
             {todo.name}
           </button>
         ))}
-        <div className="cursor-pointer font-medium inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border border-solid">
+        <div className="cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border border-solid">
           +
         </div>
       </div>

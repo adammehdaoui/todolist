@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
-import List from './List';
-import Actions from './Actions';
-import Tabs from './Tabs';
+import React from 'react';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from 'react-router-dom';
+import HomePage from './HomePage';
+// import CreateList from './CreateList';
+// import CreateItem from './CreateItem';
 import { TodoProvider } from '../config/TodoContext';
 
-function App() {
-  const [isFiltered, setFilter] = useState(false);
-  const [activeTab, setActive] = useState(1);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomePage />,
+  },
+]);
 
+function App() {
   return (
     <div className="App">
       <TodoProvider>
-        <Tabs activeTab={activeTab} setActive={setActive} />
-        <Actions isFiltered={isFiltered} setFilter={setFilter} />
-        <List activeTab={activeTab} isFiltered={isFiltered} />
+        <RouterProvider router={router} />
       </TodoProvider>
     </div>
   );
