@@ -6,11 +6,18 @@ import minus from '../assets/minus.png';
 import edit from '../assets/edit.png';
 import checked from '../assets/checked.png';
 import tocheck from '../assets/tocheck.png';
+import { useTodo } from '../config/TodoContext';
 
 function Actions({ activeTab, isFiltered, setFilter }) {
+  const { delTodo } = useTodo();
+
   const handleClick = useCallback(() => {
     setFilter(!isFiltered);
   }, [isFiltered, setFilter]);
+
+  const handleDel = useCallback(() => {
+    delTodo(activeTab);
+  }, [activeTab, delTodo]);
 
   const root = `/createItem/${activeTab}`;
 
@@ -21,7 +28,9 @@ function Actions({ activeTab, isFiltered, setFilter }) {
           <img src={plus} className="w-5 h-5 cursor-pointer" alt="Ajouter" />
         </Link>
         <img src={edit} className="w-5 h-5 cursor-pointer" alt="Modifier" />
-        <img src={minus} className="w-5 h-5 cursor-pointer" alt="Supprimer" />
+        <button type="button" onClick={handleDel}>
+          <img src={minus} className="w-5 h-5 cursor-pointer" alt="Supprimer" />
+        </button>
       </div>
       <button type="button" className="w-5 h-5 cursor-pointer ml-auto" onClick={handleClick}>
         {isFiltered

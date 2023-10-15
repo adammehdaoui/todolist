@@ -6,11 +6,15 @@ import { useTodo } from '../config/TodoContext';
 function List({ activeTab, isFiltered }) {
   const { todos } = useTodo();
 
-  const activeTodoList = todos.find((todo) => todo.id === activeTab).todo;
+  const activeList = todos.find((todo) => todo.id === activeTab);
+
+  if (activeList === undefined) return null;
+
+  const activeToDoList = activeList.todo;
 
   return (
     <div className="m-4">
-      { activeTodoList.map((toDoItem, index) => (
+      { activeToDoList.map((toDoItem, index) => (
         isFiltered === true && toDoItem.checked === true
           ? null
           : (

@@ -37,6 +37,11 @@ export function TodoProvider({ children }) {
     setTodos(updatedTodos);
   }, [todos]);
 
+  const delTodo = useCallback((todolistid) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== todolistid);
+    setTodos(updatedTodos);
+  }, [todos]);
+
   const addItem = useCallback((todolistid, description) => {
     const updatedTodos = [...todos];
     const listToUpdate = updatedTodos.find((todo) => todo.id === todolistid);
@@ -54,9 +59,9 @@ export function TodoProvider({ children }) {
 
   const contextValue = useMemo(
     () => ({
-      todos, toggleTodo, addTodo, addItem,
+      todos, toggleTodo, addTodo, delTodo, addItem,
     }),
-    [todos, toggleTodo, addTodo, addItem],
+    [todos, toggleTodo, addTodo, delTodo, addItem],
   );
 
   return (
