@@ -1,10 +1,11 @@
 import React, { useCallback, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useTodo } from '../config/TodoContext';
 
-function ListForm() {
+function ItemForm() {
   const [description, setDescription] = useState('');
-  const { addTodo } = useTodo();
+  const { id } = useParams();
+  const { addItem } = useTodo();
   const navigate = useNavigate();
 
   const handleInput = useCallback((e) => {
@@ -13,9 +14,9 @@ function ListForm() {
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    addTodo(e.target.description.value);
+    addItem(Number(id), e.target.description.value);
     navigate('/');
-  }, [addTodo]);
+  }, [addItem]);
 
   return (
     <form onSubmit={handleSubmit} className="ml-2 p-30">
@@ -47,4 +48,4 @@ function ListForm() {
   );
 }
 
-export default ListForm;
+export default ItemForm;

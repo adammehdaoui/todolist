@@ -15,9 +15,9 @@ export function TodoProvider({ children }) {
 
   const toggleTodo = useCallback((index, todolistid) => {
     const updatedTodos = [...todos];
-    const todoToUpdate = updatedTodos.find((todo) => todo.id === todolistid).todo[index];
+    const toDoToUpdate = updatedTodos.find((todo) => todo.id === todolistid).todo[index];
 
-    todoToUpdate.checked = !todoToUpdate.checked;
+    toDoToUpdate.checked = !toDoToUpdate.checked;
 
     setTodos(updatedTodos);
   }, [todos]);
@@ -35,13 +35,28 @@ export function TodoProvider({ children }) {
     const updatedTodos = [...todos, newTodo];
 
     setTodos(updatedTodos);
+  }, [todos]);
 
-    console.log(todos);
+  const addItem = useCallback((todolistid, description) => {
+    const updatedTodos = [...todos];
+    const listToUpdate = updatedTodos.find((todo) => todo.id === todolistid);
+
+    const toDoItems = listToUpdate.todo;
+    const item = {
+      text: description,
+      checked: false,
+    };
+
+    toDoItems.push(item);
+
+    setTodos(updatedTodos);
   }, [todos]);
 
   const contextValue = useMemo(
-    () => ({ todos, toggleTodo, addTodo }),
-    [todos, toggleTodo, addTodo],
+    () => ({
+      todos, toggleTodo, addTodo, addItem,
+    }),
+    [todos, toggleTodo, addTodo, addItem],
   );
 
   return (

@@ -1,13 +1,15 @@
 import React from 'react';
 
-function createListHeader() {
+function createItemHeader({ createType }) {
+  const headerText = `Create new ${createType}`;
+
   return (
     <header className="pb-2 border-b border-gray-200">
       <p className="font-bold ml-2 mt-2">
-        Create a new list
+        { headerText }
       </p>
     </header>
   );
 }
 
-export default createListHeader;
+export default createItemHeader;

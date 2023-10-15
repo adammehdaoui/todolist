@@ -1,9 +1,12 @@
 import React from 'react';
+import CreateItemHeader from '../../components/CreateItemHeader';
+import ItemForm from '../../components/ItemForm';
 
 function CreateItem() {
   return (
     <div>
-      Écran de création des items
+      <CreateItemHeader createType="todo" />
+      <ItemForm />
     </div>
   );
 }

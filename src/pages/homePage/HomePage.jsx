@@ -10,7 +10,7 @@ function HomePage() {
   return (
     <div>
       <Tabs activeTab={activeTab} setActive={setActive} />
-      <Actions isFiltered={isFiltered} setFilter={setFilter} />
+      <Actions activeTab={activeTab} isFiltered={isFiltered} setFilter={setFilter} />
       <List activeTab={activeTab} isFiltered={isFiltered} />
     </div>
   );
