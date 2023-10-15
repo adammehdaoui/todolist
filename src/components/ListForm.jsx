@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useTodo } from '../config/TodoContext';
 
 function ListForm() {
   const [description, setDescription] = useState('');
+  const { addTodo } = useTodo();
+  const navigate = useNavigate();
 
-  function handleInput(event) {
-    setDescription(event.target.value);
-  }
+  const handleInput = useCallback((e) => {
+    setDescription(e.target.value);
+  }, [setDescription]);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    setDescription(event.target.description.value);
-  }
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    addTodo(e.target.description.value);
+    navigate(('/'));
+  }, [addTodo, navigate]);
 
   return (
     <form onSubmit={handleSubmit} className="ml-2 p-30">
@@ -21,9 +25,9 @@ function ListForm() {
         </p>
         <textarea
           type="text"
+          value={description}
           id="description"
           name="description"
-          value={description}
           onChange={handleInput}
           className="mt-4 border border-gray-200 w-3/4"
         />

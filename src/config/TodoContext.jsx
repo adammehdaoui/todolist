@@ -22,7 +22,27 @@ export function TodoProvider({ children }) {
     setTodos(updatedTodos);
   }, [todos]);
 
-  const contextValue = useMemo(() => ({ todos, toggleTodo }), [todos, toggleTodo]);
+  const addTodo = useCallback((description) => {
+    const allIds = todos.map((todo) => todo.id);
+    const maxId = Math.max(...allIds);
+
+    const newTodo = {
+      id: maxId + 1,
+      name: description,
+      todo: [],
+    };
+
+    const updatedTodos = [...todos, newTodo];
+
+    setTodos(updatedTodos);
+
+    console.log(todos);
+  }, [todos]);
+
+  const contextValue = useMemo(
+    () => ({ todos, toggleTodo, addTodo }),
+    [todos, toggleTodo, addTodo],
+  );
 
   return (
     <TodoContext.Provider value={contextValue}>
