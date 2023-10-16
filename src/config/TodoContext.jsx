@@ -61,7 +61,7 @@ export function TodoProvider({ children }) {
     const updatedTodos = [...todos];
     const toDoToUpdate = updatedTodos.find((todo) => todo.id === todolistid).todo;
 
-    toDoToUpdate.splice(index, index);
+    toDoToUpdate.splice(index, 1);
 
     setTodos(updatedTodos);
   }, [todos]);

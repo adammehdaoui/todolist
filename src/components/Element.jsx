@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import minus from '../assets/minus.png';
 import { useTodo } from '../config/TodoContext';
 
 function Element({
@@ -8,17 +9,26 @@ function Element({
   todolistid,
   index,
 }) {
-  const { toggleTodo } = useTodo();
+  const { toggleTodo, delItem } = useTodo();
 
   const handleClickOnInput = useCallback(() => {
     toggleTodo(index, todolistid);
   }, [index, todolistid, toggleTodo]);
 
+  const handleClickOnDelete = useCallback(() => {
+    delItem(index, todolistid);
+  }, [index, todolistid, delItem]);
+
   return (
     <div className="element flex justify-start space-x-4">
       <input type="checkbox" className="cursor-pointer" checked={checked} onChange={() => handleClickOnInput()} />
-      <div>
-        { description }
+      <div className="flex justify-start space-x-5">
+        <p>
+          { description }
+        </p>
+        <button type="button" onClick={handleClickOnDelete}>
+          <img src={minus} className="w-5 h-5 cursor-pointer" alt="delete" />
+        </button>
       </div>
     </div>
   );
