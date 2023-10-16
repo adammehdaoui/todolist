@@ -57,11 +57,20 @@ export function TodoProvider({ children }) {
     setTodos(updatedTodos);
   }, [todos]);
 
+  const delItem = useCallback((index, todolistid) => {
+    const updatedTodos = [...todos];
+    const toDoToUpdate = updatedTodos.find((todo) => todo.id === todolistid).todo;
+
+    toDoToUpdate.splice(index, index);
+
+    setTodos(updatedTodos);
+  }, [todos]);
+
   const contextValue = useMemo(
     () => ({
-      todos, toggleTodo, addTodo, delTodo, addItem,
+      todos, toggleTodo, addTodo, delTodo, addItem, delItem,
     }),
-    [todos, toggleTodo, addTodo, delTodo, addItem],
+    [todos, toggleTodo, addTodo, delTodo, addItem, delItem],
   );
 
   return (
