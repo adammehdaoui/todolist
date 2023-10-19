@@ -19,7 +19,7 @@ function Tabs({ activeTab, setActive }) {
             <div key={todo.id}>
               <button
                 type="button"
-                className={`cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border-l border border-solid ${
+                className={`cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border ${
                   todo.id === activeTab ? 'text-blue-600 bg-gray-100' : null
                 }`}
                 key={todo.id}
@@ -27,12 +27,12 @@ function Tabs({ activeTab, setActive }) {
               >
                 {todo.name}
               </button>
-              <Bar id={todo.id} />
+              { todo.id === activeTab && <Bar id={todo.id} /> }
             </div>
           ))}
         </div>
         <div>
-          <Link to="createList" className="cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border-t border-l border-r border-solid">
+          <Link to="createList" className="cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border">
             +
           </Link>
         </div>
