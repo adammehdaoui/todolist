@@ -13,7 +13,7 @@ function List({ activeTab, isFiltered }) {
   const activeToDoList = activeList.todo;
 
   return (
-    <div className="m-4">
+    <div className="w-full">
       { activeToDoList.map((toDoItem, index) => (
         isFiltered === true && toDoItem.checked === true
           ? null

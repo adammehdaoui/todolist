@@ -20,7 +20,7 @@ function Element({
   }, [index, todolistid, delItem]);
 
   return (
-    <div className="element flex justify-start space-x-4">
+    <div className="flex justify-start space-x-4 w-full border p-2">
       <input type="checkbox" className="cursor-pointer" checked={checked} onChange={() => handleClickOnInput()} />
       <div className="flex justify-start space-x-5">
         <p>
