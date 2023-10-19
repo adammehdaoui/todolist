@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Bar from './Bar';
 import { useTodo } from '../config/TodoContext';
 
 function Tabs({ activeTab, setActive }) {
@@ -15,10 +16,10 @@ function Tabs({ activeTab, setActive }) {
       <div className="flex justify-start border-b border-gray-200">
         <div className="flex justify-start">
           {todos.map((todo) => (
-            <div>
+            <div key={todo.id}>
               <button
                 type="button"
-                className={`cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border border-solid ${
+                className={`cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border-l border border-solid ${
                   todo.id === activeTab ? 'text-blue-600 bg-gray-100' : null
                 }`}
                 key={todo.id}
@@ -26,14 +27,12 @@ function Tabs({ activeTab, setActive }) {
               >
                 {todo.name}
               </button>
-              <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                <div className="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500" />
-              </div>
+              <Bar id={todo.id} />
             </div>
           ))}
         </div>
         <div>
-          <Link to="createList" className="cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border border-solid">
+          <Link to="createList" className="cursor-pointer font-bold inline-block p-4 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl border-t border-l border-r border-solid">
             +
           </Link>
         </div>

@@ -66,11 +66,17 @@ export function TodoProvider({ children }) {
     setTodos(updatedTodos);
   }, [todos]);
 
+  const checkedLength = useCallback((todolistid) => {
+    const toDoList = todos.find((todo) => todo.id === todolistid).todo;
+
+    return toDoList.filter((todoItem) => todoItem.checked).length;
+  }, [todos]);
+
   const contextValue = useMemo(
     () => ({
-      todos, toggleTodo, addTodo, delTodo, addItem, delItem,
+      todos, toggleTodo, addTodo, delTodo, addItem, delItem, checkedLength,
     }),
-    [todos, toggleTodo, addTodo, delTodo, addItem, delItem],
+    [todos, toggleTodo, addTodo, delTodo, addItem, delItem, checkedLength],
   );
 
   return (
