@@ -14,7 +14,7 @@ function Bar({ id }) {
 
   return (
     <div className="w-full bg-gray-200 rounded-full">
-      <div className="bg-blue-600 h-1.5 rounded-full" style={barLoaded} />
+      <div className="bg-blue-600 h-1.5 rounded-full transition-width duration-500 ease-in-out" style={barLoaded} />
     </div>
   );
 }
