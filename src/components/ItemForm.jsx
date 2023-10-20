@@ -16,7 +16,7 @@ function ItemForm() {
     e.preventDefault();
     addItem(Number(id), e.target.description.value);
     navigate('/');
-  }, [addItem]);
+  }, [addItem, id, navigate]);
 
   return (
     <form onSubmit={handleSubmit} className="ml-2 p-30">

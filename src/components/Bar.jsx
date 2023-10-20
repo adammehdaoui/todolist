@@ -8,7 +8,7 @@ function Bar({ id }) {
   const toDoList = todos.find((todo) => todo.id === id).todo;
   const checkedLength = toDoList.filter((todoItem) => todoItem.checked).length;
 
-  const percentage = Math.floor((checkedLength / toDoList.length) * 100);
+  const percentage = Math.round((checkedLength / toDoList.length) * 100);
 
   const barLoaded = { width: `${percentage}%` };
 

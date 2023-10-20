@@ -15,7 +15,7 @@ function ListForm() {
     e.preventDefault();
     addTodo(e.target.description.value);
     navigate('/');
-  }, [addTodo]);
+  }, [addTodo, navigate]);
 
   return (
     <form onSubmit={handleSubmit} className="ml-2 p-30">
