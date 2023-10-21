@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -6,24 +6,31 @@ import {
 import HomePage from './homePage/HomePage';
 import CreateList from './listActions/CreateList';
 import CreateItem from './listActions/CreateItem';
+import UpdateList from './listActions/UpdateList';
 import { TodoProvider } from '../config/TodoContext';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomePage />,
-  },
-  {
-    path: '/createList',
-    element: <CreateList />,
-  },
-  {
-    path: '/createItem/:id',
-    element: <CreateItem />,
-  },
-]);
-
 function App() {
+  const [activeTab, setActive] = useState(1);
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <HomePage activeTab={activeTab} setActive={setActive} />,
+    },
+    {
+      path: '/createList',
+      element: <CreateList setActive={setActive} />,
+    },
+    {
+      path: '/updateList/:id',
+      element: <UpdateList />,
+    },
+    {
+      path: '/createItem/:id',
+      element: <CreateItem />,
+    },
+  ]);
+
   return (
     <div>
       <TodoProvider>

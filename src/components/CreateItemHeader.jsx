@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function createItemHeader({ createType }) {
+function CreateItemHeader({ createType }) {
   const headerText = `Create new ${createType}`;
 
   return (
@@ -12,4 +13,8 @@ function createItemHeader({ createType }) {
   );
 }
 
-export default createItemHeader;
+CreateItemHeader.propTypes = {
+  createType: PropTypes.string.isRequired,
+};
+
+export default CreateItemHeader;

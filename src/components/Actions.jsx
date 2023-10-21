@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useTodo } from '../config/TodoContext';
 
-function Actions({ activeTab, isFiltered, setFilter }) {
+function Actions({
+  activeTab,
+  setActive,
+  isFiltered,
+  setFilter,
+}) {
   const { todos, delTodo } = useTodo();
 
   const handleClick = useCallback(() => {
@@ -11,28 +16,34 @@ function Actions({ activeTab, isFiltered, setFilter }) {
   }, [isFiltered, setFilter]);
 
   const handleDel = useCallback(() => {
-    delTodo(activeTab);
-  }, [activeTab, delTodo]);
+    const maxId = delTodo(activeTab);
+    setActive(maxId);
+  }, [activeTab, setActive, delTodo]);
 
-  const root = `/createItem/${activeTab}`;
+  const createRoot = `/createItem/${activeTab}`;
+  const updateRoot = `/updateList/${activeTab}`;
 
   return (
     <nav className="flex justify-between space-x-3 m-3">
-      <div className="flex justify-start space-x-3">
+      <div className="flex flex-auto space-x-3">
         {todos.length > 0 && (
-          <button className="mt-auto" type="button">
-            <Link to={root} className="mt-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                <path d="M2.75 1h10.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1Zm10.5 1.5H2.75a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25ZM8 4a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5A.75.75 0 0 1 8 4Z" />
-              </svg>
-            </Link>
-          </button>
+          <div className="flex space-x-3">
+            <button className="mt-auto" type="button">
+              <Link to={createRoot} className="mt-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                  <path d="M2.75 1h10.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1Zm10.5 1.5H2.75a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25ZM8 4a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5A.75.75 0 0 1 8 4Z" />
+                </svg>
+              </Link>
+            </button>
+            <button className="mt-auto" type="button">
+              <Link to={updateRoot} className="mt-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                  <path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z" />
+                </svg>
+              </Link>
+            </button>
+          </div>
         )}
-        <button className="mt-auto" type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-            <path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z" />
-          </svg>
-        </button>
         <button className="mt-auto" type="button" onClick={handleDel}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
             <path d="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm8.5 6.25h-6.5a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5Z" />
@@ -59,6 +70,7 @@ function Actions({ activeTab, isFiltered, setFilter }) {
 
 Actions.propTypes = {
   activeTab: PropTypes.number.isRequired,
+  setActive: PropTypes.func.isRequired,
   isFiltered: PropTypes.bool.isRequired,
   setFilter: PropTypes.func.isRequired,
 };

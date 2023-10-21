@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useTodo } from '../config/TodoContext';
 
-function ListForm({ setActive }) {
+function UpdateForm() {
+  const { updateTodo } = useTodo();
   const [description, setDescription] = useState('');
-  const { addTodo } = useTodo();
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const handleInput = useCallback((e) => {
@@ -14,10 +14,9 @@ function ListForm({ setActive }) {
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    const newId = addTodo(e.target.description.value);
-    setActive(newId);
+    updateTodo(Number(id), e.target.description.value);
     navigate('/');
-  }, [addTodo, setActive, navigate]);
+  }, [id, updateTodo, navigate]);
 
   return (
     <form onSubmit={handleSubmit} className="ml-2 p-30">
@@ -25,7 +24,7 @@ function ListForm({ setActive }) {
         <textarea
           type="text"
           value={description}
-          placeholder="description"
+          placeholder="Description"
           id="description"
           name="description"
           onChange={handleInput}
@@ -40,15 +39,11 @@ function ListForm({ setActive }) {
           </button>
         </Link>
         <button type="submit" className="p-2 text-white bg-blue-600 rounded-lg">
-          Create
+          Update
         </button>
       </div>
     </form>
   );
 }
 
-ListForm.propTypes = {
-  setActive: PropTypes.func.isRequired,
-};
-
-export default ListForm;
+export default UpdateForm;

@@ -20,14 +20,15 @@ export function TodoProvider({ children }) {
     toDoToUpdate.checked = !toDoToUpdate.checked;
 
     setTodos(updatedTodos);
-  }, [todos]);
+  }, [todos, setTodos]);
 
   const addTodo = useCallback((description) => {
     const allIds = todos.map((todo) => todo.id);
-    const maxId = Math.max(...allIds);
+    const maxId = Math.max(...allIds, 1);
+    const newId = maxId + 1;
 
     const newTodo = {
-      id: maxId + 1,
+      id: newId,
       name: description,
       todo: [],
     };
@@ -35,12 +36,26 @@ export function TodoProvider({ children }) {
     const updatedTodos = [...todos, newTodo];
 
     setTodos(updatedTodos);
-  }, [todos]);
+
+    return newId;
+  }, [todos, setTodos]);
+
+  const updateTodo = useCallback((todolistid, description) => {
+    const updatedTodos = [...todos];
+    const toDoToUpdate = updatedTodos.find((todo) => todo.id === todolistid);
+
+    toDoToUpdate.name = description;
+
+    setTodos(updatedTodos);
+  }, [todos, setTodos]);
 
   const delTodo = useCallback((todolistid) => {
     const updatedTodos = todos.filter((todo) => todo.id !== todolistid);
+
     setTodos(updatedTodos);
-  }, [todos]);
+
+    return updatedTodos.reduce((max, todo) => (todo.id > max ? todo.id : max), 0);
+  }, [todos, setTodos]);
 
   const addItem = useCallback((todolistid, description) => {
     const updatedTodos = [...todos];
@@ -55,7 +70,7 @@ export function TodoProvider({ children }) {
     toDoItems.push(item);
 
     setTodos(updatedTodos);
-  }, [todos]);
+  }, [todos, setTodos]);
 
   const delItem = useCallback((index, todolistid) => {
     const updatedTodos = [...todos];
@@ -64,19 +79,13 @@ export function TodoProvider({ children }) {
     toDoToUpdate.splice(index, 1);
 
     setTodos(updatedTodos);
-  }, [todos]);
-
-  const checkedLength = useCallback((todolistid) => {
-    const toDoList = todos.find((todo) => todo.id === todolistid).todo;
-
-    return toDoList.filter((todoItem) => todoItem.checked).length;
-  }, [todos]);
+  }, [todos, setTodos]);
 
   const contextValue = useMemo(
     () => ({
-      todos, toggleTodo, addTodo, delTodo, addItem, delItem, checkedLength,
+      todos, toggleTodo, addTodo, delTodo, updateTodo, addItem, delItem,
     }),
-    [todos, toggleTodo, addTodo, delTodo, addItem, delItem, checkedLength],
+    [todos, toggleTodo, addTodo, delTodo, updateTodo, addItem, delItem],
   );
 
   return (

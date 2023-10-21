@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-// import minus from '../assets/minus.png';
 import { useTodo } from '../config/TodoContext';
 
 function Element({
