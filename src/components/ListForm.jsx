@@ -25,7 +25,7 @@ function ListForm({ setActive }) {
         <textarea
           type="text"
           value={description}
-          placeholder="description"
+          placeholder="Description"
           id="description"
           name="description"
           onChange={handleInput}

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useTodo } from '../config/TodoContext';
 
@@ -24,7 +24,7 @@ function ItemForm() {
         <textarea
           type="text"
           value={description}
-          placeholder="description"
+          placeholder="Description"
           id="description"
           name="description"
           onChange={handleInput}
