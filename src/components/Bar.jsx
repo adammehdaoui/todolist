@@ -7,8 +7,8 @@ function Bar({ checkedLength, listLength }) {
   const barLoaded = { width: `${percentage}%` };
 
   return (
-    <div className="w-full bg-gray-200 rounded-full">
-      <div className="bg-blue-600 h-1.5 rounded-full transition-width duration-500 ease-in-out" style={barLoaded} />
+    <div className="w-full bg-gray-200">
+      <div className="bg-blue-500 h-2 transition-width duration-500 ease-in-out" style={barLoaded} />
     </div>
   );
 }

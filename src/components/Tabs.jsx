@@ -26,7 +26,7 @@ function Tabs({ activeTab, setActive }) {
               <button
                 type="button"
                 className={`cursor-pointer inline-block p-3 rounded-t-lg hover:bg-gray-100 rounded-tl-4xl rounded-tr-4xl h-16 border flex justify-start ${
-                  todo.id === activeTab ? 'text-blue-600 bg-gray-100' : null
+                  todo.id === activeTab ? 'text-blue-500 bg-gray-100' : null
                 }`}
                 key={todo.id}
                 onClick={() => handleClickOnTab(todo.id)}
