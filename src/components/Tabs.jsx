@@ -8,9 +8,10 @@ import RatioItem from './RatioItem';
 function Tabs({ activeTab, setActive }) {
   const { todos } = useTodo();
 
-  const toDoList = todos.find((todo) => todo.id === activeTab).todo;
-  const checkedLength = toDoList.filter((todoItem) => todoItem.checked).length;
-  const listLength = toDoList.length;
+  const toDoList = todos.find((todo) => todo.id === activeTab);
+  const list = toDoList !== undefined ? toDoList.todo : [];
+  const checkedLength = list.filter((todoItem) => todoItem.checked).length;
+  const listLength = list.length;
 
   const handleClickOnTab = useCallback((id) => {
     setActive(id);
