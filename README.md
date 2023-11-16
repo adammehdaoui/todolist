@@ -1,3 +1,3 @@
-# To do list en React Web
+# To do list en React
 
 Try it yourself : https://todolist-alpha-two-82.vercel.app/
