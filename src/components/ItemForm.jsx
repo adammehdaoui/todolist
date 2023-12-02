@@ -1,22 +1,28 @@
-import React, { useCallback, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useTodo } from '../config/TodoContext';
+import React, { useCallback, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useTodo } from "../config/TodoContext";
 
 function ItemForm() {
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
   const { id } = useParams();
   const { addItem } = useTodo();
   const navigate = useNavigate();
 
-  const handleInput = useCallback((e) => {
-    setDescription(e.target.value);
-  }, [setDescription]);
+  const handleInput = useCallback(
+    (e) => {
+      setDescription(e.target.value);
+    },
+    [setDescription],
+  );
 
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    addItem(Number(id), e.target.description.value);
-    navigate('/');
-  }, [addItem, id, navigate]);
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      addItem(Number(id), e.target.description.value);
+      navigate("/");
+    },
+    [addItem, id, navigate],
+  );
 
   return (
     <form onSubmit={handleSubmit} className="ml-2 p-30">

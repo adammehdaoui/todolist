@@ -1,23 +1,29 @@
-import React, { useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Link, useNavigate } from 'react-router-dom';
-import { useTodo } from '../config/TodoContext';
+import React, { useCallback, useState } from "react";
+import PropTypes from "prop-types";
+import { Link, useNavigate } from "react-router-dom";
+import { useTodo } from "../config/TodoContext";
 
 function ListForm({ setActive }) {
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
   const { addTodo } = useTodo();
   const navigate = useNavigate();
 
-  const handleInput = useCallback((e) => {
-    setDescription(e.target.value);
-  }, [setDescription]);
+  const handleInput = useCallback(
+    (e) => {
+      setDescription(e.target.value);
+    },
+    [setDescription],
+  );
 
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    const newId = addTodo(e.target.description.value);
-    setActive(newId);
-    navigate('/');
-  }, [addTodo, setActive, navigate]);
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      const newId = addTodo(e.target.description.value);
+      setActive(newId);
+      navigate("/");
+    },
+    [addTodo, setActive, navigate],
+  );
 
   return (
     <form onSubmit={handleSubmit} className="ml-2 p-30">

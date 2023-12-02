@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Element from './Element';
-import { useTodo } from '../config/TodoContext';
+import React from "react";
+import PropTypes from "prop-types";
+import Element from "./Element";
+import { useTodo } from "../config/TodoContext";
 
 function List({ activeTab, isFiltered }) {
   const { todos } = useTodo();
@@ -14,20 +14,18 @@ function List({ activeTab, isFiltered }) {
 
   return (
     <div className="w-full">
-      { activeToDoList.map((toDoItem, index) => (
-        isFiltered === true && toDoItem.checked === true
-          ? null
-          : (
-            <Element
-              description={toDoItem.text}
-              checked={toDoItem.checked}
-              index={index}
-              todolistid={activeTab}
-              todos={todos}
-              key={`${toDoItem.text}-${toDoItem.checked}`}
-            />
-          )
-      ))}
+      {activeToDoList.map((toDoItem, index) =>
+        isFiltered === true && toDoItem.checked === true ? null : (
+          <Element
+            description={toDoItem.text}
+            checked={toDoItem.checked}
+            index={index}
+            todolistid={activeTab}
+            todos={todos}
+            key={`${toDoItem.text}-${toDoItem.checked}`}
+          />
+        ),
+      )}
     </div>
   );
 }

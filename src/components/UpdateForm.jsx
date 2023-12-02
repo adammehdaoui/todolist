@@ -1,22 +1,28 @@
-import React, { useCallback, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useTodo } from '../config/TodoContext';
+import React, { useCallback, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useTodo } from "../config/TodoContext";
 
 function UpdateForm() {
   const { updateTodo } = useTodo();
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const handleInput = useCallback((e) => {
-    setDescription(e.target.value);
-  }, [setDescription]);
+  const handleInput = useCallback(
+    (e) => {
+      setDescription(e.target.value);
+    },
+    [setDescription],
+  );
 
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    updateTodo(Number(id), e.target.description.value);
-    navigate('/');
-  }, [id, updateTodo, navigate]);
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      updateTodo(Number(id), e.target.description.value);
+      navigate("/");
+    },
+    [id, updateTodo, navigate],
+  );
 
   return (
     <form onSubmit={handleSubmit} className="ml-2 p-30">
