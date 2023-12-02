@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import CreateListHeader from '../../components/CreateItemHeader';
-import ListForm from '../../components/ListForm';
+import React from "react";
+import PropTypes from "prop-types";
+import CreateListHeader from "../../components/CreateItemHeader";
+import ListForm from "../../components/ListForm";
 
 function CreateList({ setActive }) {
   return (

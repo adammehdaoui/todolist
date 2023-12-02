@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import List from '../../components/List';
-import Actions from '../../components/Actions';
-import Tabs from '../../components/Tabs';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import List from "../../components/List";
+import Actions from "../../components/Actions";
+import Tabs from "../../components/Tabs";
 
 function HomePage({ activeTab, setActive }) {
   const [isFiltered, setFilter] = useState(false);

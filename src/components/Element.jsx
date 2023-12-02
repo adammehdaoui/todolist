@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import { useTodo } from "../config/TodoContext";
+import Checkbox from "./Checkbox";
 
 function Element({ description, checked, todolistid, index }) {
   const { toggleTodo, delItem } = useTodo();
@@ -15,12 +16,7 @@ function Element({ description, checked, todolistid, index }) {
 
   return (
     <div className="flex justify-start space-x-4 w-full border p-2 relative group">
-      <input
-        type="checkbox"
-        className="cursor-pointer"
-        checked={checked}
-        onChange={handleClickOnInput}
-      />
+      <Checkbox checked={checked} handleClickOnInput={handleClickOnInput} />
       <div className="flex justify-start space-x-5">
         <p>{description}</p>
         <button type="button" onClick={handleClickOnDelete}>

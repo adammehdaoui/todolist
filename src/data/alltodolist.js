@@ -1,28 +1,28 @@
 const alltodolist = [
   {
     id: 1,
-    name: 'Work Classes',
+    name: "Work Classes",
     todo: [
       {
-        text: 'Install Next.js for the start of the project',
+        text: "Install Next.js for the start of the project",
         checked: true,
       },
       {
-        text: 'Buy a suit for the conference',
+        text: "Buy a suit for the conference",
         checked: false,
       },
     ],
   },
   {
     id: 2,
-    name: 'Perso',
+    name: "Perso",
     todo: [
       {
-        text: 'Go shopping',
+        text: "Go shopping",
         checked: false,
       },
       {
-        text: 'Text somebody',
+        text: "Text somebody",
         checked: true,
       },
     ],
