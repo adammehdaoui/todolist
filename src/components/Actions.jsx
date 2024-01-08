@@ -23,7 +23,11 @@ function Actions({ activeTab, setActive, isFiltered, setFilter }) {
       <div className="flex flex-auto space-x-3">
         {todos.length > 0 && (
           <div className="flex space-x-3">
-            <button className="mt-auto" type="button">
+            <button
+              className="mt-auto"
+              type="button"
+              aria-label="Create a task"
+            >
               <Link to={createRoot} className="mt-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +39,11 @@ function Actions({ activeTab, setActive, isFiltered, setFilter }) {
                 </svg>
               </Link>
             </button>
-            <button className="mt-auto" type="button">
+            <button
+              className="mt-auto"
+              type="button"
+              aria-label="Update a task"
+            >
               <Link to={updateRoot} className="mt-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +57,12 @@ function Actions({ activeTab, setActive, isFiltered, setFilter }) {
             </button>
           </div>
         )}
-        <button className="mt-auto" type="button" onClick={handleDel}>
+        <button
+          className="mt-auto"
+          type="button"
+          onClick={handleDel}
+          aria-label="Delete a task"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"

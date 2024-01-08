@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { clsx } from "clsx";
 
 function Checkbox({ checked, handleClickOnInput }) {
   const handleKeyDown = (e) => {
@@ -12,15 +13,20 @@ function Checkbox({ checked, handleClickOnInput }) {
     <span
       role="checkbox"
       aria-checked={checked}
+      aria-label="checkbox"
       onClick={handleClickOnInput}
       onKeyDown={(e) => handleKeyDown(e)}
       tabIndex={0}
     >
-      {checked ? (
-        <span className="inline-block bg-blue-500 h-4 w-4 mt-1 border-solid border-2 border-gray-300 rounded" />
-      ) : (
-        <span className="inline-block h-4 w-4 mt-1 border-solid border-2 border-gray-300 rounded" />
-      )}
+      <span
+        className={clsx(
+          "inline-block h-4 w-4 mt-1 border-solid border-2 border-gray-300 rounded",
+          {
+            "bg-blue-500 h-4 w-4 mt-1 border-solid border-2 border-gray-300 rounded":
+              checked,
+          },
+        )}
+      />
     </span>
   );
 }

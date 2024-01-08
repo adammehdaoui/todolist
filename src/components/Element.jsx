@@ -19,7 +19,11 @@ function Element({ description, checked, todolistid, index }) {
       <Checkbox checked={checked} handleClickOnInput={handleClickOnInput} />
       <div className="flex justify-start space-x-5">
         <p>{description}</p>
-        <button type="button" onClick={handleClickOnDelete}>
+        <button
+          type="button"
+          onClick={handleClickOnDelete}
+          aria-label="delete task"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
