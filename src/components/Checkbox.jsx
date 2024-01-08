@@ -9,7 +9,7 @@ function Checkbox({ checked, handleClickOnInput }) {
   };
 
   return (
-    <div
+    <span
       role="checkbox"
       aria-checked={checked}
       onClick={handleClickOnInput}
@@ -17,11 +17,11 @@ function Checkbox({ checked, handleClickOnInput }) {
       tabIndex={0}
     >
       {checked ? (
-        <div className="bg-blue-500 h-4 w-4 mt-1 border-solid border-2 border-gray-300 rounded" />
+        <span className="inline-block bg-blue-500 h-4 w-4 mt-1 border-solid border-2 border-gray-300 rounded" />
       ) : (
-        <div className="h-4 w-4 mt-1 border-solid border-2 border-gray-300 rounded" />
+        <span className="inline-block h-4 w-4 mt-1 border-solid border-2 border-gray-300 rounded" />
       )}
-    </div>
+    </span>
   );
 }
 
